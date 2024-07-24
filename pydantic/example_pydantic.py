@@ -1,25 +1,24 @@
-import re
 import json
+from pprint import pprint
+import re
 
-from pydantic import BaseModel, validator
+from pydantic import BaseModel, field_validator
 
 
 class User(BaseModel):
     login: str
     service_number: int
     email: str
-    """
-    Вложенная схема валидации данных
-    """
-    @validator("login")
+
+    @field_validator("login")
     def validate_login(cls, value):
-        if not bool(re.fullmatch(r'[a-zA-Z]+[0-9?]+', value)):
+        if not re.fullmatch(r'[a-zA-Z]+[0-9?]+', value):
             raise ValueError("Login is invalid")
         return value
 
-    @validator("email")
+    @field_validator("email")
     def validate_email(cls, value):
-        if not bool(re.fullmatch(r'[a-zA-Z0-9.-]+@[a-zA-Z0-9-]+\.[a-zA-Z]+', value)):
+        if not re.fullmatch(r'[a-zA-Z0-9.-]+@[a-zA-Z0-9-]+\.[a-zA-Z]+', value):
             raise ValueError("Email is invalid")
         return value
 
@@ -41,11 +40,11 @@ def main():
 
     try:
         valid_result = User(**valid_user)
-        print(valid_result.json(indent=4))
+        print(valid_result.model_dump_json(indent=4))
         invalid_result = User(**invalid_user)
-        print(invalid_result.json(indent=4))
+        print(invalid_result.model_dump_json(indent=4))
     except ValueError as e:
-        print(json.dumps(e.errors(), ensure_ascii=False, indent=4))
+        pprint(e.errors(), indent=4)
 
 
 if __name__ == '__main__':
