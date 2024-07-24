@@ -1,7 +1,7 @@
 # Подготовка к работе на проекте
 
 ### Библиотека Pydantic v2.6
-[Написать вложенную схему валидации данных, получить ошибки валидации](https://github.com/Amartyanov1974/preparation_for_the_internship/blob/00113698d35c0fc16fc527ff2721ed4e3eb851f1/pydantic/example_env_valid_pydantic.py#L14)<br>
-[Экспортировать данные в формат JSON с помощью Pydantic](https://github.com/Amartyanov1974/preparation_for_the_internship/blob/00113698d35c0fc16fc527ff2721ed4e3eb851f1/pydantic/example_env_valid_pydantic.py#L78)<br>
-[Прочитать данные из JSON с помощью Pydantic](https://github.com/Amartyanov1974/preparation_for_the_internship/blob/00113698d35c0fc16fc527ff2721ed4e3eb851f1/pydantic/example_env_valid_pydantic.py#L59)<br>
-[Написать вложенную схему валидации переменных окружения (настройки приложения), получить ошибки валидации](https://github.com/Amartyanov1974/preparation_for_the_internship/blob/00113698d35c0fc16fc527ff2721ed4e3eb851f1/pydantic/example_env_valid_pydantic.py#L100)<br>
+
+[Написать вложенную схему валидации данных](https://github.com/Amartyanov1974/preparation_for_the_internship/blob/0892f57d0d88b5d3f18105a22a966d093d742f47/pydantic/example_pydantic.py#L26) , [получить ошибки валидации](https://github.com/Amartyanov1974/preparation_for_the_internship/blob/0892f57d0d88b5d3f18105a22a966d093d742f47/pydantic/example_pydantic.py#L83)<br>
+[Экспортировать данные в формат JSON с помощью Pydantic](https://github.com/Amartyanov1974/preparation_for_the_internship/blob/0892f57d0d88b5d3f18105a22a966d093d742f47/pydantic/example_pydantic.py#L62)<br>
+[Прочитать данные из JSON с помощью Pydantic](https://github.com/Amartyanov1974/preparation_for_the_internship/blob/0892f57d0d88b5d3f18105a22a966d093d742f47/pydantic/example_pydantic.py#L61)<br>
