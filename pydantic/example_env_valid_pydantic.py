@@ -15,19 +15,19 @@ class User(BaseModel):
     """
     @field_validator('latin_text')
     def validate_latin_text(cls, value):
-        if not bool(re.fullmatch(r'[a-zA-Z]+', value)):
+        if not re.fullmatch(r'[a-zA-Z]+', value):
             raise ValueError('latin_text is invalid')
         return value
 
     @field_validator('cyril_text')
     def validate_cyril_text(cls, value):
-        if not bool(re.fullmatch(r'[а-яА-ЯёЁ]+', value)):
+        if not re.fullmatch(r'[а-яА-ЯёЁ]+', value):
             raise ValueError('cyril_text is invalid')
         return value
 
     @field_validator('email')
     def validate_email(cls, value):
-        if not bool(re.fullmatch(r'[a-zA-Z0-9.-]+@[a-zA-Z0-9-]+\.[a-zA-Z]+', value)):
+        if not re.fullmatch(r'[a-zA-Z0-9.-]+@[a-zA-Z0-9-]+\.[a-zA-Z]+', value):
             raise ValueError('Email is invalid')
         return value
 
