@@ -34,38 +34,41 @@ class Boss(BaseModel):
         return value
 
 
-
-
 def main():
-    # Valid User
-    valid_user = {
-        'login': 'login22',
-        'service_number': 2000,
-        'email': 'name@domen.ru',
+    # Valid Boss
+    valid_boss = {
+        'user':
+            {
+                'login': 'login22',
+                'service_number': 2000,
+                'email': 'name@domen.ru',
+            },
+        'office': 'Отдел кадров',
     }
 
-    # Invalid User
-    invalid_user = {
-        'login': 'login_2',
-        'service_number': 1000,
-        'email': 'name_domen.ru',
+    # Inalid Boss
+    invalid_boss = {
+        'user':
+            {
+                'login': 'login_2',
+                'service_number': 2000,
+                'email': 'name_domen.ru',
+            },
+        'office': 'Отдел',
     }
 
     try:
-        valid_user_result = User(**valid_user)
-        valid_boss_result = Boss(user=valid_user_result, office = 'Отдел кадров')
+        valid_boss_result = Boss(**valid_boss)
         print(valid_boss_result.model_dump_json(indent=4))
-        invalid_user_result = User(**invalid_user)
-    except ValueError as e:
-        pprint(e.errors(), indent=4)
-    try:
-        invalid_boss_result = Boss(user=valid_user_result, office = 'Отдел')
+
+        invalid_boss_result = Boss(**invalid_boss)
     except ValueError as e:
         pprint(e.errors(), indent=4)
 
 
 if __name__ == '__main__':
     main()
+
     """
     Вывод без ошибки:
     {
@@ -77,25 +80,23 @@ if __name__ == '__main__':
         "office": "Отдел кадров"
     }
 
-    Вывод ошибки User:
-    [   {   'ctx': {'error': ValueError('Login is invalid')},
-            'input': 'login_2',
-            'loc': ('login',),
-            'msg': 'Value error, Login is invalid',
-            'type': 'value_error',
-            'url': 'https://errors.pydantic.dev/2.6/v/value_error'},
-        {   'ctx': {'error': ValueError('Email is invalid')},
-            'input': 'name_domen.ru',
-            'loc': ('email',),
-            'msg': 'Value error, Email is invalid',
-            'type': 'value_error',
-            'url': 'https://errors.pydantic.dev/2.6/v/value_error'}]
-
-    Вывод ошибки Boss:
-    [   {   'ctx': {'error': ValueError('Office is invalid')},
-            'input': 'Отдел',
-            'loc': ('office',),
-            'msg': 'Value error, Office is invalid',
-            'type': 'value_error',
-            'url': 'https://errors.pydantic.dev/2.6/v/value_error'}]
+    Вывод ошибки:
+[   {   'ctx': {'error': ValueError('Login is invalid')},
+        'input': 'login_2',
+        'loc': ('user', 'login'),
+        'msg': 'Value error, Login is invalid',
+        'type': 'value_error',
+        'url': 'https://errors.pydantic.dev/2.6/v/value_error'},
+    {   'ctx': {'error': ValueError('Email is invalid')},
+        'input': 'name_domen.ru',
+        'loc': ('user', 'email'),
+        'msg': 'Value error, Email is invalid',
+        'type': 'value_error',
+        'url': 'https://errors.pydantic.dev/2.6/v/value_error'},
+    {   'ctx': {'error': ValueError('Office is invalid')},
+        'input': 'Отдел',
+        'loc': ('office',),
+        'msg': 'Value error, Office is invalid',
+        'type': 'value_error',
+        'url': 'https://errors.pydantic.dev/2.6/v/value_error'}]
     """
