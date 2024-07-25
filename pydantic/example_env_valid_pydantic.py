@@ -3,12 +3,8 @@ import json
 from pprint import pprint
 import re
 
-
 from pydantic import field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
-
-
-
 
 
 class SubParams(BaseSettings):
@@ -78,7 +74,6 @@ def main():
     except ValueError as e:
         pprint(e.errors(), indent=4)
 
-
     environ['first_parameter'] = 'Первый параметр9'
     environ['second_parameter'] = 'Second parameter9'
 
@@ -86,7 +81,6 @@ def main():
         params = Params(_env_file='inval.env', _env_file_encoding='utf-8', more_params=SubParams())
     except ValueError as e:
         pprint(e.errors(), indent=4)
-
 
 
 if __name__ == '__main__':
