@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "py-test"
+version = "0.1.0"
+description = "Примеры работы с pytest"
+authors = ["Amartyanov1974 <randomquake@yandex.ru>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "4.2"
+pytest-django = "4.8"
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "py_test.settings"
+# -- recommended but optional:
+python_files = ["tests.py", "test_*.py", "*_tests.py"]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
