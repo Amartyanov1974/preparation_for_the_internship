@@ -5,12 +5,12 @@ description = "Примеры работы с библиотекой pydantic"
 authors = ["Александр Мартьянов <randomquake@yandex.ru>"]
 license = "MIT"
 readme = "README.md"
-packages = [{include = "example_pydantic"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
 pydantic = "2.6.4"
 environs = "^11.0.0"
+pydantic-settings = "2.2"
 
 
 [build-system]
