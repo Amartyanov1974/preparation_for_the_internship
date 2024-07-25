@@ -46,7 +46,7 @@ def main():
         'office': 'Отдел кадров',
     }
 
-    # Inalid Boss
+    # Invalid Boss
     invalid_boss = {
         'user':
             {
