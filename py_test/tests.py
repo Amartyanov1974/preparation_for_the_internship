@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from httpx import Client
 import pytest
 
 from django.core.exceptions import ObjectDoesNotExist
@@ -13,6 +14,11 @@ def test_get_thing():
         thing = Thing.objects.get(name='One_Thing')
 
 
-@pytest.mark.parametrize('numer, result', [(1, 1), (2, 4), (3, 9)])
-def test_quad(numer, result):
-    assert numer*numer == result
+urls = ['http://server1:8000/json', 'http://server2:8000/json']
+@pytest.mark.parametrize('url', urls)
+def test_api(url):
+    with Client() as client:
+        print(url)
+        response = client.get(url)
+    assert response.status_code == 200
+    assert type(response.json()) == dict
